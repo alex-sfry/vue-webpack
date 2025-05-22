@@ -9,13 +9,14 @@ export default {
 </script>
 
 <template>
-    <header class="bg-header h-80px">
-        <div class="container-xxl d-flex flex-wrap justify-content-between align-items-center h-100 px-1">
+    <header class="bg-secondary-subtle">
+        <div class="container d-flex h-100 px-1">
             <div>
                 <!-- <RouterLink to="/" class="text-decoration-none text-light">
                     <div></div>
                 </RouterLink> -->
             </div>
+            <div>Hello world!</div>
         </div>
     </header>
 </template>

@@ -100,7 +100,8 @@ export default {
             additionalAliases: ['process'],
         }),
         new HtmlWebpackPlugin({
-            template: './src/index.html'
+            template: './src/index.html',
+            favicon: './src/favicon.ico'
         }),
         new VueLoaderPlugin(),
         new MiniCssExtractPlugin({
@@ -132,7 +133,7 @@ export default {
             },
         },
         static: {
-            directory: './dist'
+            directory: './src'
         },
         port: 3000,
         open: true,
