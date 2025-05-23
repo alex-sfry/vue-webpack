@@ -32,6 +32,7 @@ export default {
     output: {
         filename: '[name].js',
         path: path.resolve(__dirname, 'dist'),
+        publicPath: '/',
         clean: true
     },
     resolve: {
@@ -101,7 +102,7 @@ export default {
         }),
         new HtmlWebpackPlugin({
             template: './src/index.html',
-            favicon: './src/favicon.ico'
+            favicon: './public/favicon.ico'
         }),
         new VueLoaderPlugin(),
         new MiniCssExtractPlugin({
@@ -121,20 +122,30 @@ export default {
         }),
         new PurgeCSSPlugin({
             paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
-            variables: true
+            safelist: ['tooltip', 'tooltip-arrow', 'bs-tooltip-auto', 'tooltip-inner'],
+            variables: false
         })
     ],
     devServer: {
+        // proxy: [
+        //     {
+        //         context: ['/api'],
+        //         target: 'http://localhost',
+        //         changeOrigin: true,
+        //         pathRewrite: { '^/api': '' },
+        //     },
+        // ],
         client: {
+            logging: 'warn',
             overlay: {
                 errors: true,
                 warnings: false,
                 runtimeErrors: true,
             },
         },
-        static: {
-            directory: './src'
-        },
+        // static: {
+        //     directory: './public'
+        // },
         port: 3000,
         open: true,
         hot: true,
